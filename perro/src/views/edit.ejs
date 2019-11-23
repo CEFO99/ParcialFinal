@@ -1,0 +1,51 @@
+<% include partials/_header %> 
+
+<div class="container">
+    <div class="row">
+
+<div class="col-md-5 offset-md-3">
+        <div class="card-body">
+            <form action="/edit/<%= dog._id %>" method="POST">
+                <div class="form-group">
+                        <input type="text" name="raza" id="raza" placeholder="raza" class="form-control" value="<%= dog.raza %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre del can" class="form-control" value="<%= dog.nombre %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="edad" id="edad" placeholder="Edad del can" class="form-control" value="<%= dog.edad %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="dueño" id="dueño" placeholder="Nombre del dueño" class="form-control" value="<%= dog.dueño %>">
+                    </div>
+                    <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">¿Vacunado?</label>
+                                    <select class="form-control" id="vacuna" name="vacuna" value="<%= dog.vacuna %>">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">¿Enfermo?</label>
+                                    <select class="form-control" id="enfermo" name="enfermo" value="<%= dog.enfermo %>">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                <button type="submit" class="btn btn-success btn-block">
+                    Editar
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<% include partials/_footer %>

@@ -1,0 +1,101 @@
+<% include partials/_header %> 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <div class="card-body">
+                    <!-- FORMULARIO -->
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <label for="raza">Raza del can: </label>
+                            <input type="text" name="raza" id="raza" placeholder="raza" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre del can: </label>
+                            <input type="text" name="nombre" id="nombre" placeholder="Nombre del can" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="edad">Edad: </label>
+                            <input type="text" name="edad" id="edad" placeholder="Edad del can" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="dueño">Dueño del can:</label>
+                            <input type="text" name="dueño" id="dueño" placeholder="Nombre del dueño" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Vacunado?</label>
+                                    <select class="form-control" id="vacuna" name="vacuna">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Enfermo?</label>
+                                    <select class="form-control" id="enfermo" name="enfermo">
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Añadir
+                        </button>
+                    </form>
+                    <!--  -->
+                </div>
+            </div>
+            
+            <div class="col-md-7 offset-md-2">
+                <!-- TABLA -->
+                <table class="table table-bordered table-hover table-dark" >
+                    <thead class="thead-dark"> 
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Raza</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col">Dueño</th>
+                            <th scope="col">¿Vacuna?</th>
+                            <th scope="col">¿Enfermo?</th>
+                            <th scope="col">¿Editar?</th>
+                            <th scope="col">¿Eliminar?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <% for(var i = 0; i < dogs.length;i++) {%>
+                        <tr>
+                            <td scope><%= i + 1 %></td>
+                            <td><%= dogs[i].raza %></td>
+                            <td><%= dogs[i].nombre %></td>
+                            <td><%= dogs[i].edad %></td>
+                            <td><%= dogs[i].dueño %></td>
+                            <td><%= dogs[i].vacuna %></td>
+                            <td><%= dogs[i].enfermo %></td>
+                            <!-- <td>
+                                <a href="/turn/<%= dogs[i]._id %>" class="btn <%= dogs[i].enfermo ? 'btn-success' :'btn-danger' %>">Vacunado</a>
+                            </td>
+                            <td>
+                                <a href="/turnGreen/<%= dogs[i]._id %>" class="btn <%= dogs[i].enfermo ? 'btn-success' :'btn-danger' %>">Enfermo</a>
+                            </td> -->
+                            <td>
+                                <a href="/edit/<%= dogs[i]._id %>" class="btn btn-info">Si, editar</a>
+                            </td>
+                            <td>
+                                <a href="/delete/<%= dogs[i]._id %>" class="btn btn-danger">Si, eliminar</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+
+<% include partials/_footer %>
